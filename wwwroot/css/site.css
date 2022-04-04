@@ -1,0 +1,73 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.top-container {
+    background-color: dimgrey;
+}
+
+.top-profiletext {
+    margin: 30px;
+    padding: 30px;
+    border: solid;
+}
+
+#top {
+
+}
+
+.mid-container {
+background-color: white;
+}
+
+.mid-text {
+    margin: 30px;
+    padding: 30px;
+    border: solid;
+    background-color:black;
+}
+
+.dot-orange {
+    background-color: orange;
+    width: 8px;
+    height: 8px;
+    transform: rotate(-45deg);
+}
+
+.dot-grey {
+    background-color: dimgrey;
+    width: 8px;
+    height: 8px;
+    transform: rotate(-45deg);
+}
+
+p {
+    color: white;
+}
+
+h3 {
+    color: orange;
+}
+
+li {
+    color: white;
+}
+
+td {
+    color:white;
+}
