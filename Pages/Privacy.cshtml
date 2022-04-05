@@ -25,21 +25,21 @@
               <tr>
                 <td>
                     <p>
-                        +45 42656585
+                        @Model.Kontaktinfo.Iphonenummer
                     </p>
                     </td>
                 </tr>
                 <tr>
                 <td>
                     <p>
-                    Oliverosterby@hotmail.com
+                        @Model.Kontaktinfo.Mail
                     </p>
                     </td>
                 </tr>
                 <tr>
                 <td>
                     <p>
-                        Ny hammelmosevej 3
+                        @Model.Kontaktinfo.Adresse
                     </p>
                  </td>
                 </tr>
@@ -50,31 +50,26 @@
             <h3>Sprog</h3>
             <div class="d-flex align-items-baseline w-100">
                 <table class="w-100">
-                    <tr>
-                        <td>Dansk</td>
-                        <td class="w-100">
-                            <div class="d-flex align-items-baseline w-100">
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-grey mx-1"></div>
-                            </div>
-                        </td>
-                    </tr>
-                     <tr>
-                        <td>Engelsk</td>
-                        <td class="w-100">
-                            <div class="d-flex align-items-baseline w-100">
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-orange mx-1"></div>
-                                <div class="dot-grey mx-1"></div>
-                                <div class="dot-grey mx-1"></div>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach (var language in Model.Languages)
+                    {
+                        <tr>
+                            <td>@language.Key</td>
+                            <td class="w-100">
+                                <div class="d-flex align-items-baseline w-100">
+                                    @for(int i = 0; i < language.Value; i++)
+                                    {
+                                        <div class="dot-orange mx-1"></div>
+                                    }
 
+                                    @for(int i = 0; i < (5 - language.Value); i++)
+                                    {
+                                        <div class="dot-grey mx-1"></div>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    
                     
                 </table> 
             </div>
@@ -82,19 +77,22 @@
 
         <div class="mid-text">
             <h3>Skills</h3>
-            
             <ul>
-                <li>C#</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li></li>
+
+             @foreach (var skill in Model.Skills)
+             {
+              <li>
+                  @skill
+              </li>  
+             }
             </ul>
+
         </div>
 
         <div class="mid-text">
             <h3>Hobbyer</h3>
             <p>
-            Fittness
+                @Model.Hobbyer
             </p>
         </div>
    </div>
@@ -102,26 +100,24 @@
         <div class="row rmid-text">
          <h2>Om mig</h2> 
           <div class="col">
-              Jeg er en dreng på 16 år, Jeg har siddet bag kassen i Meny det har jeg gjort det sidste år. Jeg har kørt motocross på eliteplan, så når jeg sætter mig nogle mål gøre jeg alt hvad jeg kan få at nå dem, Jeg er en meget aktiv ung mand og jeg elsker systemer. Jeg arbejder lige nu ved med24 på lageret
+              
+                @Model.About
+              
           </div>
         </div>
       
         <div class="row rmid-text my-5">
-         <h2>Uddanelse</h2>
+         <h2>Uddannelse</h2>
          <div class="col">
-             <h4>
-                   Techcollege, Aalborg
-             </h4>
-             
-                 Jeg er i gang med at uddanne mig til programmør på linjen,data og kommunikation Grundforløb 2 - afslutter jeg 24/6/22
-             
-         </div>
-         <div class="row-col">
-             <h4>
-                   Folkeskole
-             </h4>
-             
-                 2021 - afsluttede 9 klasse
+           
+              @foreach (var Uddannelse in Model.Uddannelser)
+             {
+             <div>
+                <h4>@Uddannelse.Navn</h4>
+                <p1>@Uddannelse.Beskrivelse</p1>
+                <p1>@Uddannelse.Slutdato.ToString("dd/MM/yyyy")</p1>
+             </div>
+             }   
              
          </div>
         </div>
@@ -129,16 +125,13 @@
         <div class="row rmid-text">
         <h2>Erhvervserfaring</h2>
         <div class="col">
-             <h4>
-                   Meny, Løkken
-             </h4>
+              @foreach (var arbejede in Model.Arbejdesteder)
+             {
+              <div>
+                <h4>@arbejede.Navn</h4>
+                <p1>@arbejede.Beskrivelse</p1>
+             </div>
+             }   
          </div>
-         <div class="row-col">
-             <h4>
-                   Med24, Løkken
-             </h4>
-         </div>
-        </div>
-       
         </div>
    </div>
